@@ -63,6 +63,8 @@
       <x:String>CredentialManagement</x:String>
       <x:String>UiPath.Credentials.Activities</x:String>
       <x:String>System.Globalization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -135,6 +137,10 @@
       <AssemblyReference>netstandard</AssemblyReference>
       <AssemblyReference>CredentialManagement</AssemblyReference>
       <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -144,7 +150,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1272,9241" sap2010:WorkflowViewState.IdRef="SequenceX_1">
+  <ueab:SequenceX DisplayName="Single Excel Process Scope" sap:VirtualizedContainerService.HintSize="1012,10378" sap2010:WorkflowViewState.IdRef="SequenceX_1">
     <ueab:SequenceX.Variables>
       <Variable x:TypeArguments="ue:IWorkbookQuickHandle" Default="[new WorkbookQuickHandle(workbookPath:=&quot;Project_Notebook.xlsx&quot;,visible:=True,autoSave:=False,createNew:=True,readOnly:=False,isWorkspace:=True)]" Name="Notes" />
       <Variable x:TypeArguments="sd:DataTable" Name="FechaInicio" />
@@ -161,34 +167,35 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[today.Day=5]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="1002,9218" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="El robot se ejecuta los dias 5 de cada mes." Condition="[today.Day=5]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="1002,10355" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1000,9064" sap2010:WorkflowViewState.IdRef="Sequence_28">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1000,10170" sap2010:WorkflowViewState.IdRef="Sequence_28">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Grupo" sap:VirtualizedContainerService.HintSize="966,9004" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Grupo" sap:VirtualizedContainerService.HintSize="966,10110" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="932,8921" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_10" ResizeWindow="None" WorkbookPath="Variables.xlsx">
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="932,10027" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_10" ResizeWindow="None" WorkbookPath="Variables.xlsx">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Variables" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="898,8629" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="898,9735" sap2010:WorkflowViewState.IdRef="Sequence_21">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="ss:SecureString" Name="EmailPassword" />
                       <Variable x:TypeArguments="x:String" Name="EmailUser" />
@@ -228,7 +235,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CreateDirectory>
-                    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="864,7976" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B5&quot;)]">
+                    <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="864,9082" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B5&quot;)]">
                       <ueab:ExcelApplicationCard.Body>
                         <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                           <ActivityAction.Argument>
@@ -239,14 +246,14 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="830,7675" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="830,8781" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ueab:ExcelForEachRowX DisplayName="For Each Excel Row" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="796,7453" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_2" Range="[Disparador.Sheet(&quot;Hoja1&quot;)]" SaveAfterEachRow="False">
+                            <ueab:ExcelForEachRowX DisplayName="For Each Excel Row" EmptyRowBehavior="Stop" HasHeaders="True" sap:VirtualizedContainerService.HintSize="796,8345" sap2010:WorkflowViewState.IdRef="ExcelForEachRowX_2" Range="[Disparador.Sheet(&quot;Hoja1&quot;)]" SaveAfterEachRow="False">
                               <ueab:ExcelForEachRowX.Body>
                                 <ActivityAction x:TypeArguments="ue:CurrentRowQuickHandle, x:Int32">
                                   <ActivityAction.Argument1>
@@ -255,14 +262,14 @@
                                   <ActivityAction.Argument2>
                                     <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                                   </ActivityAction.Argument2>
-                                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="762,7231" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="762,8123" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="728,7171" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                                    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="728,8063" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -270,13 +277,13 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <TryCatch.Try>
-                                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Polizas PGPS - Administrador de informes" sap:VirtualizedContainerService.HintSize="726,6940" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Version="V2">
+                                        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Polizas PGPS - Administrador de informes" sap:VirtualizedContainerService.HintSize="726,7692" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Version="V2">
                                           <uix:NApplicationCard.Body>
                                             <ActivityAction x:TypeArguments="x:Object">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                                               </ActivityAction.Argument>
-                                              <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="692,6683" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                              <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="692,7475" sap2010:WorkflowViewState.IdRef="Sequence_4">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -355,9 +362,9 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </Delay>
-                                                <uix:NCheckState DisplayName="Comprobar el estado de la aplicación 'Agencias'" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="658,4866" sap2010:WorkflowViewState.IdRef="NCheckState_1" Mode="WaitDisappear" ScopeIdentifier="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Timeout="72000" Version="V3">
+                                                <uix:NCheckState DisplayName="Comprobar el estado de la aplicación 'Agencias'" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="658,5088" sap2010:WorkflowViewState.IdRef="NCheckState_1" Mode="WaitDisappear" ScopeIdentifier="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Timeout="72000" Version="V3">
                                                   <uix:NCheckState.IfExists>
-                                                    <Sequence DisplayName="El objetivo desaparece." sap:VirtualizedContainerService.HintSize="614,4577" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                                    <Sequence DisplayName="El objetivo desaparece." sap:VirtualizedContainerService.HintSize="614,4839" sap2010:WorkflowViewState.IdRef="Sequence_5">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -398,7 +405,7 @@
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </uix:NClick>
-                                                      <uix:NCheckState DisplayName="Comprobar el estado de la aplicación 'Descargas'" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="580,939" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Timeout="72000" Version="V3">
+                                                      <uix:NCheckState DisplayName="Comprobar el estado de la aplicación 'Descargas'" EnableIfNotExists="False" sap:VirtualizedContainerService.HintSize="580,899" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="af3b9c01-d010-4fd7-8f7a-cf1e973bb812" Timeout="72000" Version="V3">
                                                         <uix:NCheckState.IfExists>
                                                           <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" sap:VirtualizedContainerService.HintSize="536,650" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_8" ResizeWindow="None" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B6&quot;)]">
                                                             <ueab:ExcelApplicationCard.Body>
@@ -467,7 +474,7 @@
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </ui:DeleteFileX>
-                                                      <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="580,1310" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_7" ResizeWindow="None" TemplatePath="[string.Format(&quot;{0}\RPA\Conservacion PGPS\Platilla de robot de rechazos.xlsx&quot;, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))]" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B8&quot;)]">
+                                                      <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="580,1612" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_7" ResizeWindow="None" TemplatePath="[string.Format(&quot;{0}\RPA\Conservacion PGPS\Platilla de robot de rechazos.xlsx&quot;, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))]" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B8&quot;)]">
                                                         <ueab:ExcelApplicationCard.Body>
                                                           <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                                                             <ActivityAction.Argument>
@@ -478,27 +485,33 @@
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
-                                                            <Sequence sap:VirtualizedContainerService.HintSize="536,1009" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="536,1311" sap2010:WorkflowViewState.IdRef="Sequence_24">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                   <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="502,326" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_12" ResizeWindow="None" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B10&quot;)]">
+                                                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="502,628" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_12" ResizeWindow="None" WorkbookPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B10&quot;)]">
                                                                 <ueab:ExcelApplicationCard.Body>
                                                                   <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                                                                     <ActivityAction.Argument>
                                                                       <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                                                                     </ActivityAction.Argument>
-                                                                    <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                                                    <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="468,327" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <ueab:CopyPasteRangeX DestinationRange="[Platilla.Sheet(&quot;Descarga&quot;)]" DisplayName="Copy/Paste Range" ExcludeHeaderFromSourceTable="False" sap:VirtualizedContainerService.HintSize="434,240" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_6" PasteOptions="All" SourceRange="[Excel.Sheet(&quot;Polizas PGPS&quot;)]" Transpose="False" />
+                                                                      <ueab:CopyPasteRangeX DestinationRange="[Platilla.Sheet(&quot;Descarga&quot;)]" DisplayName="Copy/Paste Range" ExcludeHeaderFromSourceTable="False" sap:VirtualizedContainerService.HintSize="434,265" sap2010:WorkflowViewState.IdRef="CopyPasteRangeX_6" PasteOptions="All" SourceRange="[Excel.Sheet(&quot;Polizas PGPS&quot;)]" Transpose="False">
+                                                                        <sap:WorkflowViewStateService.ViewState>
+                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                                          </scg:Dictionary>
+                                                                        </sap:WorkflowViewStateService.ViewState>
+                                                                      </ueab:CopyPasteRangeX>
                                                                     </Sequence>
                                                                   </ActivityAction>
                                                                 </ueab:ExcelApplicationCard.Body>
@@ -681,7 +694,7 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:RenameFileX>
-                                                <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" Domain="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="ysaenz@assanet.com" Body="[&quot;&#xA;&lt;p&gt;Buenas tardes Estimado (a): &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString +  &quot;, gusto saludarles.&lt;/p&gt;&#xA; &#xA;&lt;p&gt;Compartimos los siguientes reportes correspondiente al mes de  &quot;+now.AddMonths(-1).ToString(&quot;MMMM-yyyy&quot;,New System.Globalization.CultureInfo(&quot;es-ES&quot;))+&quot;,  para su debida gestión:&#xA; &#xA;&lt;p&gt;-&#x9;Reporte de período de gracia y período de suspensión .  &#xA; &#xA;&lt;p&gt;Agradeciendo su apoyo en la gestión, con el propósito de evitar la cancelación por falta de pago o caducidad por fondos insuficientes.&#xA; &#xA;&lt;p&gt;Nos reiteramos a la orden de requerir mayor información.&#xA;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Conservación de Cartera&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,56,100);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Tel. + (507) 300-2772&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;a style='border-width:0px;color:blue;font:inherit;margin:0px;padding:0px;vertical-align:baseline;' target='_blank' rel='noopener noreferrer' href='http://www.assanet.com/' data-auth='NotApplicable' data-linkindex='1' data-ogsc=''&gt;&lt;span style='color:blue;font-family:Calibri, sans-serif;font-size:10pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;u&gt;www.assanet.com&lt;/u&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;Edificio ASSA, Avenida Nicanor de Obarrio (Calle50), entre Calles 56 y 57.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(0,32,96);font-family:Calibri, sans-serif;font-size:10pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:20px;margin:0px;padding:0px;vertical-align:baseline;'&gt;&#xA;            &lt;picture&gt;&#xA;                &lt;source srcset='https://i.ibb.co/6RPDzhz/assa.png' type='image/webp' sizes='(max-width: 155px) 100vw, 155px'&gt;&lt;img class='image_resized' style='border-width:0px;color:inherit;font:inherit;height:0.5625in;margin:0px;max-width:471px;min-height:auto;min-width:auto;padding:0px;vertical-align:top;width:1.618in;' src='https://i.ibb.co/6RPDzhz/assa.png' alt='cid:image004.png@01D480E2.D8BFCE00' data-ckbox-resource-id='UmJkcFaQX9QT' width='155' height='54' id='x__x0000_i1026' uploadprocessed='true'&gt;&#xA;            &lt;/picture&gt;&#xA;        &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&#xA;            &lt;picture&gt;&#xA;                &lt;source srcset='https://i.ibb.co/2M8dcFx/assaRec.png' type='image/webp' sizes='(max-width: 17px) 100vw, 17px'&gt;&lt;img class='image_resized' style='border-width:0px;color:inherit;font:inherit;height:0.1875in;margin:0px;max-width:471px;min-height:auto;min-width:auto;padding:0px;vertical-align:top;width:0.1805in;' src='https://i.ibb.co/2M8dcFx/assaRec.png' alt='image003' data-ckbox-resource-id='Vim8kZinXxMZ' width='17' height='18' id='x_Imagen_x0020_1' uploadprocessed='true'&gt;&#xA;            &lt;/picture&gt;&#xA;        &lt;/span&gt;&lt;/span&gt;&lt;span style='color:red;font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;&amp;nbsp; &lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;Por favor, recicle. Considere el medio ambiente antes de imprimir este correo electrónico.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;i&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Regulado y Supervisado por la Superintendencia de Seguros y Reaseguros de Panamá.&lt;/strong&gt;&lt;/span&gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&#xA;&quot;]" Cc="[CurrentRow.ByField(&quot;EJECUTIVA CDC&quot;)]" DisplayName="Enviar mensaje de correo de Exchange" ExchangeVersion="Exchange2013_SP1" sap:VirtualizedContainerService.HintSize="658,184" sap2010:WorkflowViewState.IdRef="SendExchangeMail_3" IsBodyHtml="True" IsDraft="False" SaveCopy="False" SecurePassword="[EmailPassword]" Server="https://correo.assanet.com/" Subject="[&quot;Notificación de Polizas PG/PS - &quot; +CurrentRow(&quot;Licencia&quot;).ToString + &quot; - &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString]" To="[CurrentRow.ByField(&quot;CORREOS GERENTES&quot;).Replace(&quot; &quot;,&quot;&quot;)]" User="[EmailUser]">
+                                                <ui:SendExchangeMail ApplicationId="{x:Null}" DirectoryId="{x:Null}" Domain="{x:Null}" EmailAutodiscover="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" AuthenticationMode="UserNameAndPassword" Bcc="ysaenz@assanet.com" Body="[&quot;&#xD;&#xA;&lt;p&gt;Buenas tardes Estimado (a): &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString +  &quot;, gusto saludarles.&lt;/p&gt;&#xD;&#xA; &#xD;&#xA;&lt;p&gt;Compartimos los siguientes reportes correspondiente al mes de  &quot;+now.AddMonths(-1).ToString(&quot;MMMM-yyyy&quot;,New System.Globalization.CultureInfo(&quot;es-ES&quot;))+&quot;,  para su debida gestión:&#xD;&#xA; &#xD;&#xA;&lt;p&gt;-&#x9;Reporte de período de gracia y período de suspensión .  &#xD;&#xA; &#xD;&#xA;&lt;p&gt;Agradeciendo su apoyo en la gestión, con el propósito de evitar la cancelación por falta de pago o caducidad por fondos insuficientes.&#xD;&#xA; &#xD;&#xA;&lt;p&gt;Nos reiteramos a la orden de requerir mayor información.&#xD;&#xA;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Conservación de Cartera&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,56,100);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Tel. + (507) 300-2772&lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;a style='border-width:0px;color:blue;font:inherit;margin:0px;padding:0px;vertical-align:baseline;' target='_blank' rel='noopener noreferrer' href='http://www.assanet.com/' data-auth='NotApplicable' data-linkindex='1' data-ogsc=''&gt;&lt;span style='color:blue;font-family:Calibri, sans-serif;font-size:10pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;u&gt;www.assanet.com&lt;/u&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;Edificio ASSA, Avenida Nicanor de Obarrio (Calle50), entre Calles 56 y 57.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(0,32,96);font-family:Calibri, sans-serif;font-size:10pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:20px;margin:0px;padding:0px;vertical-align:baseline;'&gt;&#xD;&#xA;            &lt;picture&gt;&#xD;&#xA;                &lt;source srcset='https://i.ibb.co/6RPDzhz/assa.png' type='image/webp' sizes='(max-width: 155px) 100vw, 155px'&gt;&lt;img class='image_resized' style='border-width:0px;color:inherit;font:inherit;height:0.5625in;margin:0px;max-width:471px;min-height:auto;min-width:auto;padding:0px;vertical-align:top;width:1.618in;' src='https://i.ibb.co/6RPDzhz/assa.png' alt='cid:image004.png@01D480E2.D8BFCE00' data-ckbox-resource-id='UmJkcFaQX9QT' width='155' height='54' id='x__x0000_i1026' uploadprocessed='true'&gt;&#xD;&#xA;            &lt;/picture&gt;&#xD;&#xA;        &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&#xD;&#xA;            &lt;picture&gt;&#xD;&#xA;                &lt;source srcset='https://i.ibb.co/2M8dcFx/assaRec.png' type='image/webp' sizes='(max-width: 17px) 100vw, 17px'&gt;&lt;img class='image_resized' style='border-width:0px;color:inherit;font:inherit;height:0.1875in;margin:0px;max-width:471px;min-height:auto;min-width:auto;padding:0px;vertical-align:top;width:0.1805in;' src='https://i.ibb.co/2M8dcFx/assaRec.png' alt='image003' data-ckbox-resource-id='Vim8kZinXxMZ' width='17' height='18' id='x_Imagen_x0020_1' uploadprocessed='true'&gt;&#xD;&#xA;            &lt;/picture&gt;&#xD;&#xA;        &lt;/span&gt;&lt;/span&gt;&lt;span style='color:red;font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;&amp;nbsp; &lt;/strong&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;Por favor, recicle. Considere el medio ambiente antes de imprimir este correo electrónico.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&lt;p style='-webkit-text-stroke-width:0px;background-color:rgb(255, 255, 255);color:rgb(0, 0, 0);font-family:&amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, BlinkMacSystemFont, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;font-size:medium;font-style:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-weight:400;letter-spacing:normal;line-height:22px;margin:0cm 0cm 0.0001pt;orphans:2;text-align:left;text-decoration-color:initial;text-decoration-style:initial;text-decoration-thickness:initial;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;'&gt;&lt;span style='color:rgb(31,73,125);font-family:Calibri, sans-serif;font-size:11pt;'&gt;&lt;i&gt;&lt;span style='border-width:0px;font-feature-settings:inherit;font-kerning:inherit;font-optical-sizing:inherit;font-size-adjust:inherit;font-stretch:inherit;font-style:inherit;font-variant:inherit;font-variation-settings:inherit;font-weight:inherit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;'&gt;&lt;strong&gt;Regulado y Supervisado por la Superintendencia de Seguros y Reaseguros de Panamá.&lt;/strong&gt;&lt;/span&gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;&#xD;&#xA;&quot;]" Cc="[CurrentRow.ByField(&quot;EJECUTIVA CDC&quot;)]" DisplayName="Enviar mensaje de correo de Exchange" ExchangeVersion="Exchange2013_SP1" sap:VirtualizedContainerService.HintSize="658,184" sap2010:WorkflowViewState.IdRef="SendExchangeMail_3" IsBodyHtml="True" IsDraft="False" SaveCopy="False" SecurePassword="[EmailPassword]" Server="https://correo.assanet.com/" Subject="[&quot;Notificación de Polizas PG/PS - &quot; +CurrentRow(&quot;Licencia&quot;).ToString + &quot; - &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString]" To="[CurrentRow.ByField(&quot;CORREOS GERENTES&quot;).Replace(&quot; &quot;,&quot;&quot;)]" User="[EmailUser]">
                                                   <ui:SendExchangeMail.Files>
                                                     <InArgument x:TypeArguments="x:String">[Variables.Sheet("Hoja1").Cell("B3")+"\"+CurrentRow("Licencia").ToString +"-" +CurrentRow("AGENCIA").ToString +".xlsx"]</InArgument>
                                                   </ui:SendExchangeMail.Files>
@@ -693,13 +706,14 @@
                                                 </ui:SendExchangeMail>
                                                 <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="658,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                                                   <ui:CommentOut.Body>
-                                                    <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,257" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                                    <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,229" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Buenas tardes Estimado (a): &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString +  &quot;, gusto saludarles. &#xA;&#xA;Compartimos los siguientes reportes para la gestión correspondiente:&#xA;&#xA;-&#x9;Reporte de período de gracia y período de suspensión .  Agradeciendo su apoyo en la gestión, con el propósito de evitar la cancelación por falta de pago o caducidad por fondos insuficientes.&#xA;&#xA;Nos reiteramos a la orden de requerir mayor información.&quot;]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="388,146" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="Notificación de Polizas PG/PS" To="[CurrentRow.ByField(&quot;EJECUTIVA CDC&quot;)]">
+                                                      <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Buenas tardes Estimado (a): &quot; +CurrentRow(&quot;AGENCIA&quot;).ToString +  &quot;, gusto saludarles. &#xA;&#xA;Compartimos los siguientes reportes para la gestión correspondiente:&#xA;&#xA;-&#x9;Reporte de período de gracia y período de suspensión .  Agradeciendo su apoyo en la gestión, con el propósito de evitar la cancelación por falta de pago o caducidad por fondos insuficientes.&#xA;&#xA;Nos reiteramos a la orden de requerir mayor información.&quot;]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="416,169" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="Notificación de Polizas PG/PS" To="[CurrentRow.ByField(&quot;EJECUTIVA CDC&quot;)]">
                                                         <ui:SendOutlookMail.Files>
                                                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                                             <InArgument x:TypeArguments="x:String">[Variables.Sheet("Hoja1").Cell("B3")+"\"+CurrentRow("Licencia").ToString +"-" +CurrentRow("AGENCIA").ToString +".xlsx"]</InArgument>
@@ -708,7 +722,7 @@
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </ui:SendOutlookMail>
@@ -721,39 +735,45 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:CommentOut>
-                                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B12&quot;)]" DisplayName="Mover archivo" sap:VirtualizedContainerService.HintSize="658,57" sap2010:WorkflowViewState.IdRef="MoveFile_3" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B8&quot;)]">
+                                                <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B12&quot;)]" DisplayName="Mover archivo" sap:VirtualizedContainerService.HintSize="658,191" sap2010:WorkflowViewState.IdRef="MoveFile_3" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B8&quot;)]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:MoveFile>
-                                                <ui:RenameFileX DisplayName="Rename File" FilePath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B13&quot;)]" sap:VirtualizedContainerService.HintSize="658,57" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[CurrentRow(&quot;Licencia&quot;).ToString + &quot;-&quot; + CurrentRow(&quot;AGENCIA&quot;).ToString]">
+                                                <ui:RenameFileX DisplayName="Rename File" FilePath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B13&quot;)]" sap:VirtualizedContainerService.HintSize="658,175" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[CurrentRow(&quot;Licencia&quot;).ToString + &quot;-&quot; + CurrentRow(&quot;AGENCIA&quot;).ToString]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:RenameFileX>
-                                                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="658,57" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B7&quot;)]">
+                                                <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="658,112" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B7&quot;)]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:DeleteFileX>
-                                                <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B15&quot;)]" DisplayName="Copiar archivo" sap:VirtualizedContainerService.HintSize="658,57" sap2010:WorkflowViewState.IdRef="CopyFile_3" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B14&quot;)]">
+                                                <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B15&quot;)]" DisplayName="Copiar archivo" sap:VirtualizedContainerService.HintSize="658,186" sap2010:WorkflowViewState.IdRef="CopyFile_3" Path="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B14&quot;)]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:CopyFile>
-                                                <ueab:WriteCellX Cell="[CurrentRow.ByField(&quot;Resultado&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="658,50" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[&quot;Exitoso&quot;]" />
+                                                <ueab:WriteCellX Cell="[CurrentRow.ByField(&quot;Resultado&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="658,184" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[&quot;Exitoso&quot;]">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ueab:WriteCellX>
                                               </Sequence>
                                             </ActivityAction>
                                           </uix:NApplicationCard.Body>
@@ -780,11 +800,11 @@
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                             </ActivityAction.Argument>
-                                            <ueab:WriteCellX Cell="[CurrentRow.ByField(&quot;Resultado&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="726,25" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[string.Format(&quot;Error&quot;)]">
+                                            <ueab:WriteCellX Cell="[CurrentRow.ByField(&quot;Resultado&quot;)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="726,159" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[string.Format(&quot;Error&quot;)]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </ueab:WriteCellX>
@@ -811,8 +831,20 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ueab:ExcelForEachRowX>
-                            <ui:RenameFolderX DisplayName="Cambiar el nombre de la carpeta" FolderPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B2&quot;)]" sap:VirtualizedContainerService.HintSize="796,57" sap2010:WorkflowViewState.IdRef="RenameFolderX_2" NewName="[NCarperta]" />
-                            <ui:RenameFolderX DisplayName="Cambiar el nombre de la carpeta" FolderPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B3&quot;)]" sap:VirtualizedContainerService.HintSize="796,57" sap2010:WorkflowViewState.IdRef="RenameFolderX_3" NewName="[NCarperta]" />
+                            <ui:RenameFolderX DisplayName="Cambiar el nombre de la carpeta" FolderPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B2&quot;)]" sap:VirtualizedContainerService.HintSize="796,164" sap2010:WorkflowViewState.IdRef="RenameFolderX_2" NewName="[NCarperta]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:RenameFolderX>
+                            <ui:RenameFolderX DisplayName="Cambiar el nombre de la carpeta" FolderPath="[Variables.Sheet(&quot;Hoja1&quot;).Cell(&quot;B3&quot;)]" sap:VirtualizedContainerService.HintSize="796,164" sap2010:WorkflowViewState.IdRef="RenameFolderX_3" NewName="[NCarperta]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:RenameFolderX>
                             <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="796,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                               <ui:CommentOut.Body>
                                 <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="450,257" sap2010:WorkflowViewState.IdRef="Sequence_27">
